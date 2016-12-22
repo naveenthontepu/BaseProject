@@ -8,13 +8,13 @@ import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
 import thontepu.naveen.baseproject.R;
 
-public class MainActivity extends AppCompatActivity {
+public class SplashScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_splash_screen);
     }
     public void forceCrash(View view) {
         throw new RuntimeException("This is a crash");

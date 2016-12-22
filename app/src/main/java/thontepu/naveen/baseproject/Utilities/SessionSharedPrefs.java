@@ -3,8 +3,25 @@ package thontepu.naveen.baseproject.Utilities;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import thontepu.naveen.baseproject.BuildConfig;
+
 /**
  * Created by mac on 12/22/16
+ */
+
+
+/**
+ *
+ * Live template for the setter and getter method
+ private static final String $variableName$ = "$variable$";
+ public void set$variable$($object$ $variable$){
+ editor.put$ObjectType$($variableName$ , $variable$);
+ editor.commit();
+ }
+
+ public $object$ get$variable$(){
+ return pref.get$ObjectType$($variableName$,$defaultvalue$);
+ }
  */
 
 public class SessionSharedPrefs {
@@ -12,7 +29,8 @@ public class SessionSharedPrefs {
     private final SharedPreferences.Editor editor;
     private static SessionSharedPrefs sessionSharedPrefs;
 
-    private static final String PREF_FILENAME = "thontepu.naveen.baseproject";
+    private static final String PREF_FILENAME = BuildConfig.APPLICATION_ID;
+    private static final String TRIAL_VARIABLE = "trialVariable";
 
 
     private SessionSharedPrefs(Context context){
@@ -24,5 +42,12 @@ public class SessionSharedPrefs {
         sessionSharedPrefs = new SessionSharedPrefs(context);
     }
 
+    public void setTrialVariable(String trialVariable){
+        editor.putString(TRIAL_VARIABLE , trialVariable);
+        editor.commit();
+    }
 
+    public String getTrialVariable(){
+        return pref.getString(TRIAL_VARIABLE,"");
+    }
 }
