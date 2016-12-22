@@ -19,7 +19,7 @@
         </activity>
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="Enter your key" />
+            android:value="93104c0e785382f079d4d9a4bf7f95e4cc9e86b3" />
     </application>
 
 </manifest>
