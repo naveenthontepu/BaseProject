@@ -8,6 +8,11 @@ import thontepu.naveen.baseproject.BuildConfig;
 
 public class Constants {
     public class Tags {
-        public static final String TAG = BuildConfig.APPLICATION_ID;
+        static final String TAG = BuildConfig.APPLICATION_ID;
+        public static final String RETROFIT_TAG = "retrofitTag";
+    }
+
+    public class HeadersConstants {
+        public static final String AUTH_TOKEN = "authToken";
     }
 }
