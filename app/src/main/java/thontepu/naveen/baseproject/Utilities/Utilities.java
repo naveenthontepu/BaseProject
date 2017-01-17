@@ -1,5 +1,7 @@
 package thontepu.naveen.baseproject.Utilities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import thontepu.naveen.baseproject.BuildConfig;
@@ -25,5 +27,20 @@ public class Utilities {
                 }
             }
         }
+    }
+
+    /**
+     * Creates New Stack intent.
+     *
+     * @param context
+     * @param targetClass
+     * @return
+     */
+    public static Intent getIntent(Context context, Class targetClass) {
+        Intent intent = new Intent(context, targetClass);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        return intent;
     }
 }

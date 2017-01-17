@@ -28,9 +28,10 @@ public class SessionSharedPrefs {
     private final SharedPreferences pref;
     private final SharedPreferences.Editor editor;
     private static SessionSharedPrefs sessionSharedPrefs;
-
     private static final String PREF_FILENAME = BuildConfig.APPLICATION_ID;
+
     private static final String TRIAL_VARIABLE = "trialVariable";
+    private static final String TIMES_OPENED = "timesOpened";
 
 
     private SessionSharedPrefs(Context context){
@@ -42,6 +43,10 @@ public class SessionSharedPrefs {
         sessionSharedPrefs = new SessionSharedPrefs(context);
     }
 
+    public static SessionSharedPrefs getInstance(){
+        return sessionSharedPrefs;
+    }
+
     public void setTrialVariable(String trialVariable){
         editor.putString(TRIAL_VARIABLE , trialVariable);
         editor.commit();
@@ -50,4 +55,14 @@ public class SessionSharedPrefs {
     public String getTrialVariable(){
         return pref.getString(TRIAL_VARIABLE,"");
     }
+
+    public void setTimesOpened(int TimesOpened){
+        editor.putInt(TIMES_OPENED, TimesOpened);
+        editor.commit();
+    }
+
+    public int getTimesOpened(){
+        return pref.getInt(TIMES_OPENED,0);
+    }
+
 }

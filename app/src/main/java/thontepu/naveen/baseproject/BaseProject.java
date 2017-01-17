@@ -2,8 +2,11 @@ package thontepu.naveen.baseproject;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Intent;
 import android.os.Bundle;
 
+import thontepu.naveen.baseproject.Activities.MainActivity;
+import thontepu.naveen.baseproject.Activities.SplashScreen;
 import thontepu.naveen.baseproject.Utilities.Constants;
 import thontepu.naveen.baseproject.Utilities.SessionSharedPrefs;
 import thontepu.naveen.baseproject.Utilities.Utilities;
@@ -27,6 +30,7 @@ public class BaseProject extends Application {
         SessionSharedPrefs.setInstance(this);
         Utilities.printLog("onCreate");
         registerActivityLifecycleCallbacks(new ActivityLifeCycle());
+        SessionSharedPrefs.getInstance().setTimesOpened(SessionSharedPrefs.getInstance().getTimesOpened()+1);
     }
 
     public class ActivityLifeCycle implements ActivityLifecycleCallbacks {
