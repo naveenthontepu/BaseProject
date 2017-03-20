@@ -7,7 +7,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Converter;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 import thontepu.naveen.baseproject.Retrofit.Api.ApiResponseHandler;
 import thontepu.naveen.baseproject.Retrofit.Api.ErrorResponse;
 import thontepu.naveen.baseproject.Utilities.Constants;
@@ -19,23 +18,14 @@ import thontepu.naveen.baseproject.Utilities.Constants;
 public abstract class GenericController<T> {
 
     // TODO: 2/13/17 have to write another generic controller using BUS(square OTTO)
-    private final Retrofit retrofit;
     private final ApiResponseHandler<T> apiResponseHandler;
-    private final BaseProjectApi baseProjectApi;
 
-    public GenericController(ApiResponseHandler<T> api) {
-        this(api, 20);
-    }
-
-    private GenericController(ApiResponseHandler<T> apiResponseHandler, int timeout) {
+    private GenericController(ApiResponseHandler<T> apiResponseHandler) {
         this.apiResponseHandler = apiResponseHandler;
-        RetrofitUtil retrofitUtil = new RetrofitUtil();
-        retrofit = retrofitUtil.retrofitBuilder(timeout);
-        baseProjectApi = retrofit.create(BaseProjectApi.class);
     }
 
     public void apiCall() {
-        Call<T> apiCall = makeApiCall(baseProjectApi);
+        Call<T> apiCall = makeApiCall(RetrofitFactory.getInstance().getBaseProjectApi());
         apiCall.enqueue(new Callback<T>() {
             @Override
             public void onResponse(Call<T> call, Response<T> response) {
@@ -57,7 +47,7 @@ public abstract class GenericController<T> {
             apiResponseHandler.handleResponse(response.body(), null);
         } else {
             ErrorResponse errorResponse = null;
-            Converter<ResponseBody, ErrorResponse> converter = retrofit.responseBodyConverter(ErrorResponse.class, new Annotation[0]);
+            Converter<ResponseBody, ErrorResponse> converter = RetrofitFactory.getInstance().getRetrofit().responseBodyConverter(ErrorResponse.class, new Annotation[0]);
             try {
                 if (response != null) {
                     errorResponse = converter.convert(response.errorBody());
