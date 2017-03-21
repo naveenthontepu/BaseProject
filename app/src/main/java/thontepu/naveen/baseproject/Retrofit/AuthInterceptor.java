@@ -15,7 +15,7 @@ import thontepu.naveen.baseproject.Utilities.Utilities;
  * Created by mac on 11/5/16
  */
 
-class AuthInterceptor implements Interceptor{
+public class AuthInterceptor implements Interceptor{
     private String authKey;
 
     void setAuthKey(String userId, String password) {

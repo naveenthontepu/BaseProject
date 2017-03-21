@@ -1,4 +1,4 @@
-package thontepu.naveen.baseproject.Retrofit;
+package thontepu.naveen.baseproject.Retrofit.RxGenericController;
 
 import java.util.concurrent.TimeUnit;
 
@@ -8,21 +8,25 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import thontepu.naveen.baseproject.BuildConfig;
+import thontepu.naveen.baseproject.Retrofit.AuthInterceptor;
+import thontepu.naveen.baseproject.Retrofit.BaseProjectApi;
 
 /**
- * Created by naveen thontepu on 08-03-2016
+ * Created by mac on 3/21/17
  */
-public class RetrofitFactory {
+
+class RetrofitRxFactory {
     private final Retrofit retrofit;
     private final AuthInterceptor authInterceptor;
-    private final static RetrofitFactory apiFactory = new RetrofitFactory();
+    private final static RetrofitRxFactory apiFactory = new RetrofitRxFactory();
     private final BaseProjectApi baseProjectApi;
     private final OkHttpClient okHttpClient;
 
-    private RetrofitFactory() {
+    private RetrofitRxFactory() {
         authInterceptor = new AuthInterceptor();
         okHttpClient = getOkhttpClient(20);
         retrofit = new Retrofit.Builder()
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 // TODO: 2/13/17 Change the testing url and production url and you are good to go
                 .baseUrl(BuildConfig.testing ? "http://testingURl" : "https://productionUrl")
@@ -31,7 +35,7 @@ public class RetrofitFactory {
         baseProjectApi = retrofit.create(BaseProjectApi.class);
     }
 
-    public static RetrofitFactory getInstance() {
+    public static RetrofitRxFactory getInstance() {
         return apiFactory;
     }
 
@@ -64,4 +68,3 @@ public class RetrofitFactory {
     }
 
 }
-//
