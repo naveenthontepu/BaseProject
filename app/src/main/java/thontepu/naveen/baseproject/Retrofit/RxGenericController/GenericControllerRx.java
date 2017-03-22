@@ -19,7 +19,6 @@ import thontepu.naveen.baseproject.Retrofit.BaseProjectApi;
 
 public abstract class GenericControllerRx<T> {
     private RetrofitResponseObserver<T> observer;
-    private Consumer<T> consumer;
 
     public GenericControllerRx(RetrofitResponseObserver<T> observer) {
         this.observer = observer;
