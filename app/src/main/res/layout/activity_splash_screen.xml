@@ -21,5 +21,11 @@
         android:onClick="forceCrash"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Call Api"
+        android:onClick="apiCall"/>
 
 </RelativeLayout>

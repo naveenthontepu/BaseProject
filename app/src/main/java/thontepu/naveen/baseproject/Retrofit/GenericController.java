@@ -20,7 +20,7 @@ public abstract class GenericController<T> {
     // TODO: 2/13/17 have to write another generic controller using BUS(square OTTO)
     private final ApiResponseHandler<T> apiResponseHandler;
 
-    private GenericController(ApiResponseHandler<T> apiResponseHandler) {
+    protected GenericController(ApiResponseHandler<T> apiResponseHandler) {
         this.apiResponseHandler = apiResponseHandler;
     }
 
@@ -40,7 +40,7 @@ public abstract class GenericController<T> {
 
     }
 
-    abstract Call<T> makeApiCall(BaseProjectApi baseProjectApi);
+    public abstract Call<T> makeApiCall(BaseProjectApi baseProjectApi);
 
     private void processResponse(Response<T> response) {
         if (response != null && response.isSuccessful()) {

@@ -21,7 +21,7 @@ public class LaunchScreen extends Activity {
         Intent splash = Utilities.getIntent(this, SplashScreen.class);
         Intent main = Utilities.getIntent(this, MainActivity.class);
         Utilities.printLog("times opened = "+SessionSharedPrefs.getInstance().getTimesOpened());
-        if (SessionSharedPrefs.getInstance().getTimesOpened() % 2 == 1) {
+        if (true || SessionSharedPrefs.getInstance().getTimesOpened() % 2 == 1) {
             startActivity(splash);
         } else {
             startActivity(main);

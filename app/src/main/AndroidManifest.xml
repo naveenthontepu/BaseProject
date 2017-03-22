@@ -14,6 +14,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="93104c0e785382f079d4d9a4bf7f95e4cc9e86b3" />
+
         <activity
             android:name=".Activities.LaunchScreen"
             android:configChanges="orientation"
@@ -34,9 +38,6 @@
         <activity android:name=".Activities.SplashScreen">
         </activity>
 
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="93104c0e785382f079d4d9a4bf7f95e4cc9e86b3" />
 
     </application>
 

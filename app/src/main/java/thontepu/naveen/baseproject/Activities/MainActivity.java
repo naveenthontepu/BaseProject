@@ -1,13 +1,11 @@
 package thontepu.naveen.baseproject.Activities;
 
-import android.annotation.TargetApi;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
@@ -25,7 +23,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import thontepu.naveen.baseproject.R;
-import thontepu.naveen.baseproject.Utilities.RoundImage;
 import thontepu.naveen.baseproject.Utilities.Utilities;
 
 public class MainActivity extends AppCompatActivity {
@@ -90,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         ByteBuffer byteBuffer = ByteBuffer.allocate(bitmap.getByteCount());
         bitmap.copyPixelsToBuffer(byteBuffer);
         byte[] by = byteBuffer.array();
-        Utilities.printLog("byte = "+ Arrays.toString(by));
+        Utilities.printLog("byte = " + Arrays.toString(by));
         bitmap.copyPixelsFromBuffer(ByteBuffer.wrap(by));
         profileImage.setImageBitmap(bitmap);
     }

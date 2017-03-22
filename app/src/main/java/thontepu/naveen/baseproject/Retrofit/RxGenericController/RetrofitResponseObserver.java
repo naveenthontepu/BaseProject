@@ -8,7 +8,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.internal.disposables.DisposableHelper;
 import okhttp3.ResponseBody;
 import retrofit2.Converter;
-import retrofit2.adapter.rxjava.HttpException;
+import retrofit2.HttpException;
 import thontepu.naveen.baseproject.Retrofit.Api.ErrorResponse;
 import thontepu.naveen.baseproject.Utilities.Constants;
 

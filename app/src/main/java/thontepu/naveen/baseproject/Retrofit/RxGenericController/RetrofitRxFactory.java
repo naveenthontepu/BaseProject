@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import thontepu.naveen.baseproject.BuildConfig;
 import thontepu.naveen.baseproject.Retrofit.AuthInterceptor;
@@ -26,7 +26,7 @@ class RetrofitRxFactory {
         authInterceptor = new AuthInterceptor();
         okHttpClient = getOkhttpClient(20);
         retrofit = new Retrofit.Builder()
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 // TODO: 2/13/17 Change the testing url and production url and you are good to go
                 .baseUrl(BuildConfig.testing ? "http://testingURl" : "https://productionUrl")
