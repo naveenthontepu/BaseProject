@@ -20,6 +20,10 @@ import thontepu.naveen.baseproject.Retrofit.BaseProjectApi;
 public abstract class GenericControllerRx<T> {
     private RetrofitResponseObserver<T> observer;
 
+    public GenericControllerRx() {
+        this.observer = null;
+    }
+
     public GenericControllerRx(RetrofitResponseObserver<T> observer) {
         this.observer = observer;
     }
@@ -57,14 +61,15 @@ public abstract class GenericControllerRx<T> {
         return ls;
     }
 
-    public void apiCall() {
-        Observable<T> apiCall = makeApiCall(RetrofitRxFactory.getInstance().getBaseProjectApi());
-        apiCall.subscribe(new Consumer<T>() {
-            @Override
-            public void accept(T t) throws Exception {
+    public Observable<T> getApiCall() {
+        return makeApiCall(RetrofitRxFactory.getInstance().getBaseProjectApi());
+    }
 
-            }
-        });
+    public void apiCall() throws Exception {
+        if (observer == null) {
+            throw new Exception("Cannot call api without subscriber rather use \"getApiCall()\" method");
+        }
+        Observable<T> apiCall = makeApiCall(RetrofitRxFactory.getInstance().getBaseProjectApi());
         apiCall.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
