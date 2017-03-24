@@ -1,6 +1,8 @@
 package thontepu.naveen.baseproject.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -15,6 +17,7 @@ import thontepu.naveen.baseproject.Retrofit.Api.SampleGetApi.SampleGetResponse;
 import thontepu.naveen.baseproject.Retrofit.BaseProjectApi;
 import thontepu.naveen.baseproject.Retrofit.GenericController;
 import thontepu.naveen.baseproject.Utilities.Constants;
+import thontepu.naveen.baseproject.Utilities.SensorUtilities;
 import thontepu.naveen.baseproject.Utilities.Utilities;
 
 public class SplashScreen extends AppCompatActivity {
@@ -45,5 +48,11 @@ public class SplashScreen extends AppCompatActivity {
             }
         };
         sampleGetApi.apiCall();
+    }
+
+    public void startVibration(View view) {
+        SensorUtilities.triggerVibration(getApplicationContext(),25000);
+        Intent mainIntent = new Intent(this,MainActivity.class);
+        startActivity(mainIntent);
     }
 }

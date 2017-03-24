@@ -26,6 +26,14 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="Call Api"
+        android:id="@+id/getApi"
         android:onClick="apiCall"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Start Vibration"
+        android:layout_below="@+id/getApi"
+        android:onClick="startVibration"/>
 
 </RelativeLayout>

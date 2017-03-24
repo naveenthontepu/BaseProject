@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import thontepu.naveen.baseproject.R;
+import thontepu.naveen.baseproject.Utilities.SensorUtilities;
 import thontepu.naveen.baseproject.Utilities.Utilities;
 
 public class MainActivity extends AppCompatActivity {
@@ -106,5 +108,10 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @OnClick(R.id.stopVibration)
+    public void stopVibration() {
+        SensorUtilities.cancelVibration(getApplicationContext());
     }
 }

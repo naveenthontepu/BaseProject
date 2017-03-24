@@ -24,5 +24,12 @@
         android:layout_below="@+id/profileImage"
         android:id="@+id/scaleET"
         android:inputType="numberDecimal"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="stop vibration"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/scaleET"
+        android:id="@+id/stopVibration"/>
 
 </RelativeLayout>
