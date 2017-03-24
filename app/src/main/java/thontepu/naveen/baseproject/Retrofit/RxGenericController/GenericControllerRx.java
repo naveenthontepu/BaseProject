@@ -2,6 +2,7 @@ package thontepu.naveen.baseproject.Retrofit.RxGenericController;
 
 
 import io.reactivex.Observable;
+import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.SchedulerSupport;
 import io.reactivex.disposables.Disposable;
@@ -18,6 +19,8 @@ import thontepu.naveen.baseproject.Retrofit.BaseProjectApi;
  */
 
 public abstract class GenericControllerRx<T> {
+    private Scheduler subscribeScheduler = Schedulers.io();
+    private Scheduler observeScheduler = AndroidSchedulers.mainThread();
     private RetrofitResponseObserver<T> observer;
 
     public GenericControllerRx() {
@@ -49,6 +52,14 @@ public abstract class GenericControllerRx<T> {
         this.observer = subscribe(onNext, onError, onComplete, onSubscribe);
     }
 
+    public void setSubscribeScheduler(Scheduler subscribeScheduler) {
+        this.subscribeScheduler = subscribeScheduler;
+    }
+
+    public void setObserveScheduler(Scheduler observeScheduler) {
+        this.observeScheduler = observeScheduler;
+    }
+
     @SchedulerSupport(SchedulerSupport.NONE)
     private RetrofitResponseObserver<T> subscribe(Consumer<T> onNext, RetrofitErrorConsumer onError,
                                                   Action onComplete, Consumer<? super Disposable> onSubscribe) {
@@ -70,8 +81,8 @@ public abstract class GenericControllerRx<T> {
             throw new Exception("Cannot call api without subscriber rather use \"getApiCall()\" method");
         }
         Observable<T> apiCall = makeApiCall(RetrofitRxFactory.getInstance().getBaseProjectApi());
-        apiCall.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+        apiCall.subscribeOn(subscribeScheduler)
+                .observeOn(observeScheduler)
                 .subscribe(observer);
     }
 
