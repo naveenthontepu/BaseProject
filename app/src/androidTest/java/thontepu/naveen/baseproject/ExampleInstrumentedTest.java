@@ -7,6 +7,9 @@ import android.support.test.runner.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import okhttp3.mockwebserver.MockWebServer;
+import thontepu.naveen.baseproject.Utilities.Utilities;
+
 import static org.junit.Assert.*;
 
 /**
@@ -21,6 +24,11 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("thontepu.naveen.baseproject", appContext.getPackageName());
+        MockWebServer mockWebServer = new MockWebServer();
+        Utilities.printLog("the mockWebserver = "+mockWebServer.getHostName());
+        Utilities.printLog("the mockWebserver = "+mockWebServer.getPort());
+        Utilities.printLog("the mockWebserver = "+mockWebServer.toString());
+        Utilities.printLog("the mockWebserver = "+mockWebServer.toProxyAddress().toString());
+        assertEquals("thontepu.naveen.baseproject0", appContext.getPackageName());
     }
 }

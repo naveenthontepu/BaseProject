@@ -64,7 +64,7 @@ public abstract class GenericController<T> {
                     errorResponse.setMessage("Unable to reach our servers.");
                     errorResponse.setCode(5000);
                 }
-                errorResponse.setStatus(Constants.ApiStatusAndMessage.ERROR);
+                errorResponse.setStatus(RetrofitConstants.ApiStatusAndMessage.ERROR);
             } finally {
                 apiResponseHandler.handleResponse(null, errorResponse);
             }

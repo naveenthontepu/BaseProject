@@ -24,7 +24,7 @@ public class RetrofitFactory {
         retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 // TODO: 2/13/17 Change the testing url and production url and you are good to go
-                .baseUrl(BuildConfig.testing ? "http://testingURl" : "https://productionUrl")
+                .baseUrl(BuildConfig.testing ? RetrofitConstants.UrlContstants.testingUrl : "https://productionUrl")
                 .client(okHttpClient)
                 .build();
         baseProjectApi = retrofit.create(BaseProjectApi.class);

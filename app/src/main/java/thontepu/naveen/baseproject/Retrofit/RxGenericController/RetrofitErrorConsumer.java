@@ -7,6 +7,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Converter;
 import retrofit2.HttpException;
 import thontepu.naveen.baseproject.Retrofit.Api.ErrorResponse;
+import thontepu.naveen.baseproject.Retrofit.RetrofitConstants;
 import thontepu.naveen.baseproject.Utilities.Constants;
 
 /**
@@ -26,7 +27,7 @@ public abstract class RetrofitErrorConsumer implements Consumer<Throwable> {
                 } else if (exception.response() != null) {
                     errorResponse.setCode(exception.response().code());
                     errorResponse.setMessage(exception.response().message());
-                    errorResponse.setStatus(Constants.ApiStatusAndMessage.ERROR);
+                    errorResponse.setStatus(RetrofitConstants.ApiStatusAndMessage.ERROR);
                 } else {
                     throw new Exception();
                 }
@@ -36,7 +37,7 @@ public abstract class RetrofitErrorConsumer implements Consumer<Throwable> {
         } catch (Exception ignored) {
             errorResponse.setMessage("Unable to reach our servers.");
             errorResponse.setCode(5000);
-            errorResponse.setStatus(Constants.ApiStatusAndMessage.ERROR);
+            errorResponse.setStatus(RetrofitConstants.ApiStatusAndMessage.ERROR);
         } finally {
             accept(errorResponse);
         }

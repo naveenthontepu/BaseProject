@@ -30,7 +30,7 @@ public class AuthInterceptor implements Interceptor{
         if (authKey !=null && !authKey.isEmpty()) {
             // TODO: 12/22/16 Add common headers for all the apis
             Headers sessionHeader = newRequest.headers().newBuilder()
-                    .add(Constants.HeadersConstants.AUTH_TOKEN, authKey)
+                    .add(RetrofitConstants.HeadersConstants.AUTH_TOKEN, authKey)
                     .build();
             newRequest = newRequest.newBuilder().headers(sessionHeader).build();
         }

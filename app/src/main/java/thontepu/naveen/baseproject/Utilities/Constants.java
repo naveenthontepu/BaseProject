@@ -12,11 +12,4 @@ public class Constants {
         public static final String RETROFIT_TAG = "retrofitTag";
     }
 
-    public class HeadersConstants {
-        public static final String AUTH_TOKEN = "authToken";
-    }
-
-    public class ApiStatusAndMessage {
-        public static final String ERROR = "error";
-    }
 }

@@ -1,5 +1,6 @@
 package thontepu.naveen.baseproject.Utilities;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -43,4 +44,24 @@ public class Utilities {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         return intent;
     }
+
+    public static ProgressDialog getProgressDialog(Context context, int message) {
+        ProgressDialog dialog = new ProgressDialog(context);
+        dialog.setCancelable(false);
+        dialog.setMessage(context.getString(message));
+        return dialog;
+    }
+
+    public static void showProgressDialog(ProgressDialog progressDialog) {
+        if (progressDialog != null && !progressDialog.isShowing()) {
+            progressDialog.show();
+        }
+    }
+
+    public static void dismissDialog(ProgressDialog progressDialog) {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
+    }
+
 }
