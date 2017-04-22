@@ -68,8 +68,7 @@ public abstract class GenericControllerRx<T> {
         ObjectHelper.requireNonNull(onComplete, "onComplete is null");
         ObjectHelper.requireNonNull(onSubscribe, "onSubscribe is null");
 
-        LambdaRetrofitResponseObserver<T> ls = new LambdaRetrofitResponseObserver<>(onNext, onError, onComplete, onSubscribe);
-        return ls;
+        return new LambdaRetrofitResponseObserver<>(onNext, onError, onComplete, onSubscribe);
     }
 
     public Observable<T> getApiCall() {

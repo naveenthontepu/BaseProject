@@ -52,13 +52,10 @@ public class SplashScreen extends AppCompatActivity {
         Utilities.printLog("--------------------------------------------------------------------------------");
         progressDialog = Utilities.getProgressDialog(this,R.string.app_name);
         Utilities.showProgressDialog(progressDialog);
-        SampleGetApiController sampleGetApiController = new SampleGetApiController(new ApiResponseHandler<SampleGetResponse>() {
-            @Override
-            public void handleResponse(SampleGetResponse sampleGetResponse, ErrorResponse errorResponse) {
-                Utilities.dismissDialog(progressDialog);
-                Utilities.printLog(Constants.Tags.RETROFIT_TAG, "the sample response = " + sampleGetResponse);
-                Utilities.printLog(Constants.Tags.RETROFIT_TAG, "the error response = " + errorResponse);
-            }
+        SampleGetApiController sampleGetApiController = new SampleGetApiController((sampleGetResponse, errorResponse) -> {
+            Utilities.dismissDialog(progressDialog);
+            Utilities.printLog(Constants.Tags.RETROFIT_TAG, "the sample response = " + sampleGetResponse);
+            Utilities.printLog(Constants.Tags.RETROFIT_TAG, "the error response = " + errorResponse);
         });
         sampleGetApiController.apiCall();
 //        GenericController<SampleGetResponse> sampleGetApi = new GenericController<SampleGetResponse>(new ApiResponseHandler<SampleGetResponse>() {

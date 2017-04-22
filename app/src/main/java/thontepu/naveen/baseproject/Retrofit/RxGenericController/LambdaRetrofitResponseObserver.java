@@ -11,13 +11,13 @@ import thontepu.naveen.baseproject.Retrofit.Api.ErrorResponse;
  * Created by mac on 3/21/17
  */
 
-public class LambdaRetrofitResponseObserver<T> extends RetrofitResponseObserver<T> {
-    final Consumer<? super T> onNext;
-    final RetrofitErrorConsumer onError;
-    final Action onComplete;
-    final Consumer<? super Disposable> onSubscribe;
+class LambdaRetrofitResponseObserver<T> extends RetrofitResponseObserver<T> {
+    private final Consumer<? super T> onNext;
+    private final RetrofitErrorConsumer onError;
+    private final Action onComplete;
+    private final Consumer<? super Disposable> onSubscribe;
 
-    public LambdaRetrofitResponseObserver(Consumer<? super T> onNext, RetrofitErrorConsumer onError, Action onComplete, Consumer<? super Disposable> onSubscribe) {
+    LambdaRetrofitResponseObserver(Consumer<? super T> onNext, RetrofitErrorConsumer onError, Action onComplete, Consumer<? super Disposable> onSubscribe) {
         this.onNext = onNext;
         this.onError = onError;
         this.onComplete = onComplete;
