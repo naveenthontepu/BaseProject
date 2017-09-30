@@ -103,3 +103,5 @@
 }
 
 -keepattributes JavascriptInterface
+-dontwarn java.lang.invoke.*
+-dontwarn **$$Lambda$*
